@@ -1,0 +1,86 @@
+// SYNTAX TEST "source.wit" "This tests world shapes"
+
+default world some-world {
+// <----    storage.modifier.default.world-item.wit
+//      ^^^^^   keyword.declaration.world.world-item.wit storage.type.wit
+//            ^^^^^^^^^^   entity.name.type.id.world-item.wit
+//                       ^ punctuation.definition.block.begin.world-item.wit
+
+  import filesystem: filesystem.filesystem
+//^^^^^^   keyword.control.import.import-item.wit
+//       ^^^^^^^^^^   variable.other.id.import-item.wit
+//                 ^   keyword.operator.key-value.import-item.wit
+//                   ^^^^^^^^^^   entity.name.namespace.id.use-path.wit
+//                             ^   keyword.operator.namespace-separator.use-path.wit
+//                              ^^^^^^^^^^   entity.name.namespace.id.use-path.wit
+
+  import random: pkg.random
+//^^^^^^   keyword.control.import.import-item.wit
+//       ^^^^^^   variable.other.id.import-item.wit
+//             ^   keyword.operator.key-value.import-item.wit
+//               ^^^   variable.language.self.use-path.wit
+//                  ^   keyword.operator.namespace-separator.use-path.wit
+//                   ^^^^^^   entity.name.namespace.id.use-path.wit
+
+  export main: func(
+//^^^^^^   keyword.control.export.export-item.wit
+//       ^^^^   variable.other.constant.id.export-item.wit
+//           ^   meta.export-item.wit
+//             ^^^^   keyword.other.func.func-type.wit
+//                 ^   keyword.operator.brackets.round.begin.func-type.wit
+
+    args: list<string>,
+//  ^^^^    variable.parameter.id.named-type.wit
+//      ^    keyword.operator.key-value.named-type.wit
+//        ^^^^^^^^^^^^    meta.named-type.wit
+//                    ^    meta.named-type-list.wit
+
+  ) -> result
+//^    meta.function.wit
+//  ^^    keyword.operator.arrow.skinny.func-type.wit
+//     ^^^^^^    meta.result-list.wit entity.name.type.result.wit
+
+}
+// <----    punctuation.definition.block.end.world-item.wit
+
+world another-world {
+// <----    keyword.declaration.world.world-item.wit storage.type.wit
+//    ^^^^^^^^^^^^^    entity.name.type.id.world-item.wit
+//                  ^    punctuation.definition.block.begin.world-item.wit
+
+  use pkg.path.{id}
+//^^^    keyword.other.use.use-item.wit
+//    ^^^    variable.language.self.use-path.wit
+//       ^    keyword.operator.namespace-separator.use-path.wit
+//        ^^^^    entity.name.namespace.id.use-path.wit
+//            ^    keyword.operator.namespace-separator.use-item.wit
+//             ^    punctuation.definition.block.begin.use-item.wit
+//              ^^    entity.name.type.declaration.use-names-item.use-item.wit
+//                ^    punctuation.definition.block.end.use-item.wit
+
+  type my-type = string
+//^^^^    keyword.declaration.type.wit
+//     ^^^^^^^    entity.name.type.id.type-item.wit
+//             ^    meta.type-item.wit
+//               ^^^^^^    entity.name.type.string.wit
+
+  record my-record {
+//^^^^^^    keyword.declaration.record.record-item.wit
+//       ^^^^^^^^^    entity.name.type.id.record-item.wit
+//                 ^    punctuation.definition.block.begin.record-item.wit
+
+    foo: string,
+//  ^^^    variable.declaration.id.record-fields.wit
+//     ^    keyword.operator.key-value.record-fields.wit
+//       ^^^^^^    entity.name.type.string.wit
+//             ^    meta.record-fields.wit
+
+    bar: string
+  }
+//^    meta.record-item.wit
+
+  export hello: func()
+//^^^^^^   keyword.control.export.export-item.wit
+}
+// <----    punctuation.definition.block.end.world-item.wit
+

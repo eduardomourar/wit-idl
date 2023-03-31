@@ -1,0 +1,87 @@
+// SYNTAX TEST "source.wit" "This tests interface shapes"
+
+interface some-interface {
+// <----    keyword.declaration.interface.interface-item.wit storage.type.wit
+//        ^^^^^^^^^^^^^^    entity.name.type.id.interface-item.wit
+//                       ^    punctuation.definition.block.begin.interface-item.wit
+
+  use self.io.level-1.2-level.{
+//^^^    keyword.other.use.use-item.wit
+//    ^^^^    variable.language.self.use-path.wit
+//        ^    keyword.operator.namespace-separator.use-path.wit
+//         ^^    entity.name.namespace.id.use-path.wit
+//           ^    keyword.operator.namespace-separator.use-path.wit
+//            ^^^^^^^    entity.name.namespace.id.use-path.wit
+//                   ^    keyword.operator.namespace-separator.use-path.wit
+//                    ^^^^^^^    entity.name.namespace.id.use-path.wit
+//                           ^    keyword.operator.namespace-separator.use-item.wit
+//                            ^    punctuation.definition.block.begin.use-item.wit
+
+    input-stream,
+//  ^^^^^^^^^^^^    entity.name.type.declaration.use-names-item.use-item.wit
+//              ^    keyword.operator.comma.use-names-list.wit
+
+    output-stream
+//  ^^^^^^^^^^^^^^    entity.name.type.declaration.use-names-item.use-item.wit
+
+  }
+//^    punctuation.definition.block.end.use-item.wit
+
+  make-request: func(
+//^^^^^^^^^^^^    entity.name.function.id.func-item.wit
+//            ^    keyword.operator.key-value.func-item.wit
+//              ^^^^    keyword.other.func.func-type.wit
+//                  ^    keyword.operator.brackets.round.begin.func-type.wit
+
+    url: method,
+//  ^^^    variable.parameter.id.named-type.wit
+//     ^    keyword.operator.key-value.named-type.wit
+//       ^^^^^^    entity.name.type.id.wit
+//             ^    meta.named-type.wit
+
+    headers: headers
+  ) -> result<output-stream, string>
+//^    meta.function.wit
+//  ^^    keyword.operator.arrow.skinny.func-type.wit
+//     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    meta.result-list.wit
+
+  enum others{input-stream,output-stream}
+//^^^^    keyword.other.enum.enum-items.wit
+//     ^^^^^^    entity.name.type.id.enum-items.wit
+//           ^    punctuation.definition.block.begin.enum-items.wit
+//            ^^^^^^^^^^^^    variable.other.enummember.id.enum-cases.wit
+//                        ^    keyword.operator.comma.enum-cases.wit
+//                         ^^^^^^^^^^^^^    variable.other.enummember.id.enum-cases.wit
+//                                      ^    meta.enum-items.wit
+
+}
+// <----    punctuation.definition.block.end.interface-item.wit
+
+interface another-interface {
+// <----    keyword.declaration.interface.interface-item.wit storage.type.wit
+//        ^^^^^^^^^^^^^^^^^    entity.name.type.id.interface-item.wit
+//                          ^    punctuation.definition.block.begin.interface-item.wit
+
+  type my-type = string
+//^^^^    keyword.declaration.type.wit
+//     ^^^^^^^    entity.name.type.id.type-item.wit
+//             ^    meta.type-item.wit
+//               ^^^^^^    entity.name.type.string.wit
+
+  record my-record {
+//^^^^^^    keyword.declaration.record.record-item.wit
+//       ^^^^^^^^^    entity.name.type.id.record-item.wit
+//                 ^    punctuation.definition.block.begin.record-item.wit
+
+    foo: string,
+//  ^^^    variable.declaration.id.record-fields.wit
+//     ^    keyword.operator.key-value.record-fields.wit
+//       ^^^^^^    entity.name.type.string.wit
+//             ^    meta.record-fields.wit
+
+    bar: string
+  }
+//^    meta.record-item.wit
+
+}
+// <----    punctuation.definition.block.end.interface-item.wit

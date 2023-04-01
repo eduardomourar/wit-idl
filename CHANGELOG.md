@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/eduardomourar/wit-idl/compare/wit-idl-v0.0.3...wit-idl-v0.0.4) (2023-04-01)
+
+
+### Bug Fixes
+
+* wrong type declaration identifier ([#5](https://github.com/eduardomourar/wit-idl/issues/5)) ([63abc67](https://github.com/eduardomourar/wit-idl/commit/63abc67965a797e890ef2f493764755d711069bb))
+
 ## [0.0.3](https://github.com/eduardomourar/wit-idl/compare/wit-idl-v0.0.2...wit-idl-v0.0.3) (2023-04-01)
 
 

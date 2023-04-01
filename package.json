@@ -5,6 +5,7 @@
   "private": true,
   "version": "0.0.1",
   "publisher": "bytecodealliance",
+  "icon": "images/wit-icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/bytecodealliance/wit-idl.git"
@@ -36,10 +37,6 @@
         "extensions": [
           ".wit"
         ],
-        "icon": {
-          "dark": "./images/wit-icon.png",
-          "light": "./images/wit-icon.png"
-        },
         "configuration": "./language-configuration.json"
       }
     ],

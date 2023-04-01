@@ -63,7 +63,7 @@ interface another-interface {
 //                          ^    punctuation.definition.block.begin.interface-item.wit
 
   type my-type = string
-//^^^^    keyword.declaration.type.wit
+//^^^^    keyword.declaration.type.type-item.wit
 //     ^^^^^^^    entity.name.type.id.type-item.wit
 //             ^    meta.type-item.wit
 //               ^^^^^^    entity.name.type.string.wit

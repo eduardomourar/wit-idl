@@ -461,7 +461,6 @@
       "name": "meta.flags-items.wit",
       "comment": "Syntax for WIT like `flags \"id\" {`",
       "begin": "(flags)\\s+([\\w][\\-\\w]*)\\s*(\\{)",
-      "end": "\\}",
       "beginCaptures": {
         "1": {
           "name": "keyword.other.flags.flags-items.wit"
@@ -473,11 +472,6 @@
           "name": "punctuation.definition.block.begin.flags-items.wit"
         }
       },
-      "endCaptures": {
-        "0": {
-          "name": "punctuation.definition.block.end.flags-items.wit"
-        }
-      },
       "patterns": [
         {
           "include": "#flags-fields"
@@ -485,7 +479,13 @@
         {
           "include": "#comment"
         }
-      ]
+      ],
+      "end": "(?<=\\})",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.block.end.flags-items.wit"
+        }
+      }
     },
     "flags-fields": {
       "name": "meta.flags-fields.wit",
@@ -507,7 +507,6 @@
       "name": "meta.variant.wit",
       "comment": "Syntax for WIT like `variant \"id\" {`",
       "begin": "(variant)\\s+([\\w][\\-\\w]*)\\s*(\\{)",
-      "end": "\\}",
       "beginCaptures": {
         "1": {
           "name": "keyword.other.variant.wit"
@@ -517,11 +516,6 @@
         },
         "3": {
           "name": "punctuation.definition.block.begin.variant.wit"
-        }
-      },
-      "endCaptures": {
-        "0": {
-          "name": "punctuation.definition.block.end.variant.wit"
         }
       },
       "patterns": [
@@ -534,7 +528,13 @@
         {
           "include": "#comment"
         }
-      ]
+      ],
+      "end": "(?<=\\})",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.block.end.variant.wit"
+        }
+      }
     },
     "variant-cases": {
       "name": "meta.variant-cases.wit",

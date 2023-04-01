@@ -393,7 +393,7 @@
       "begin": "\\b(type)\\s+([\\w][\\-\\w]*)\\s*\\=\\s*(.+)",
       "beginCaptures": {
         "1": {
-          "name": "keyword.declaration.type.wit storage.type.wit"
+          "name": "keyword.declaration.type.type-item.wit storage.type.wit"
         },
         "2": {
           "name": "entity.name.type.id.type-item.wit"

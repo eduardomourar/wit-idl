@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.3](https://github.com/eduardomourar/wit-idl/compare/wit-idl-v0.0.2...wit-idl-v0.0.3) (2023-04-01)
+
+
+### Bug Fixes
+
+* closing block for variant and flags shapes ([#3](https://github.com/eduardomourar/wit-idl/issues/3)) ([9238b91](https://github.com/eduardomourar/wit-idl/commit/9238b91b6d386e138bbe4f450aad808d9af969df))
+
 ## [0.0.2](https://github.com/eduardomourar/wit-idl/compare/wit-idl-v0.0.1...wit-idl-v0.0.2) (2023-04-01)
 
 

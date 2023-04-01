@@ -31,7 +31,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           TAG_NAME: ${{ steps.release.outputs.tag_name }}
         run: |
-          sed -i "s/__VERSION__/${TAG_NAME:v*}/" fingeringdiagram.qml
+          npm run package
           mv wit-idl.vsix wit-idl-${TAG_NAME}.vsix 
           gh release upload ${TAG_NAME} wit-idl-${TAG_NAME}.vsix
 

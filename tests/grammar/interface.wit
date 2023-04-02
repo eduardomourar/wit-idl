@@ -37,13 +37,18 @@ interface some-interface {
 //  ^^^    variable.parameter.id.named-type.wit
 //     ^    keyword.operator.key-value.named-type.wit
 //       ^^^^^^    entity.name.type.id.wit
-//             ^    meta.named-type.wit
+//             ^    meta.named-type-list.wit meta.types.named-type-list.wit
 
     headers: headers
   ) -> result<output-stream, string>
 //^    meta.function.wit
 //  ^^    keyword.operator.arrow.skinny.func-type.wit
-//     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    meta.result-list.wit
+//     ^^^^^^    meta.types.result-list.wit entity.name.type.result.wit
+//           ^    keyword.operator.angle.begin.result.wit
+//            ^^^^^^^^^^^^^    entity.name.type.id.wit
+//                         ^    keyword.operator.comma.result.wit
+//                           ^^^^^^    entity.name.type.string.wit
+//                                 ^    keyword.operator.angle.end.result.wit
 
   enum others{input-stream,output-stream}
 //^^^^    keyword.other.enum.enum-items.wit

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.5](https://github.com/eduardomourar/wit-idl/compare/wit-idl-v0.0.4...wit-idl-v0.0.5) (2023-04-02)
+
+
+### Features
+
+* support highlighting of container types ([#7](https://github.com/eduardomourar/wit-idl/issues/7)) ([d032643](https://github.com/eduardomourar/wit-idl/commit/d032643f6d93c0b7df4eaceff03a39c424f0e394))
+
 ## [0.0.4](https://github.com/eduardomourar/wit-idl/compare/wit-idl-v0.0.3...wit-idl-v0.0.4) (2023-04-01)
 
 

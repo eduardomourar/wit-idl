@@ -33,8 +33,8 @@ jobs:
         run: |
           npm ci
           npm run package
-          mv wit-idl.vsix wit-idl-${TAG_NAME}.vsix 
-          gh release upload ${TAG_NAME} wit-idl-${TAG_NAME}.vsix
+          mv wit-idl.vsix ${TAG_NAME}.vsix 
+          gh release upload ${TAG_NAME} ${TAG_NAME}.vsix
 
   label:
     needs: [publish]

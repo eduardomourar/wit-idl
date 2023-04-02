@@ -32,13 +32,15 @@ default world some-world {
     args: list<string>,
 //  ^^^^    variable.parameter.id.named-type.wit
 //      ^    keyword.operator.key-value.named-type.wit
-//        ^^^^^^^^^^^^    meta.named-type.wit
-//                    ^    meta.named-type-list.wit
+//        ^^^^    entity.name.type.list.wit
+//            ^    keyword.operator.angle.begin.list.wit
+//              ^^^^^    entity.name.type.string.wit
+//                   ^    keyword.operator.angle.end.list.wit
 
   ) -> result
 //^    meta.function.wit
 //  ^^    keyword.operator.arrow.skinny.func-type.wit
-//     ^^^^^^    meta.result-list.wit entity.name.type.result.wit
+//     ^^^^^^    meta.types.result-list.wit entity.name.type.result.wit
 
 }
 // <----    punctuation.definition.block.end.world-item.wit
@@ -75,9 +77,35 @@ world another-world {
 //       ^^^^^^    entity.name.type.string.wit
 //             ^    meta.record-fields.wit
 
-    bar: string
+    bar: bool
   }
 //^    meta.record-item.wit
+
+  import sample: interface {
+    input: func(value: tuple<u8,i32,float64>) -> result
+//  ^^^^^    entity.name.function.id.func-item.wit
+//       ^    keyword.operator.key-value.func-item.wit
+//         ^^^^    keyword.other.func.func-type.wit
+//             ^    keyword.operator.brackets.round.begin.func-type.wit
+
+
+    output: func(
+      response: result<_,failure>
+//    ^^^^^^^^    variable.parameter.id.named-type.wit
+//            ^    keyword.operator.key-value.named-type.wit
+//              ^^^^^^    entity.name.type.result.wit
+//                    ^    keyword.operator.angle.begin.result.wit
+//                     ^    variable.other.inferred-type.result.wit
+//                      ^    keyword.operator.comma.result.wit
+//                       ^^^^^^^    entity.name.type.id.wit
+//                              ^    keyword.operator.angle.end.result.wit
+
+    ) -> result
+//  ^    meta.function.wit
+//    ^^    keyword.operator.arrow.skinny.func-type.wit
+//       ^^^^^^    meta.types.result-list.wit entity.name.type.result.wit
+
+  }
 
   export hello: func()
 //^^^^^^   keyword.control.export.export-item.wit

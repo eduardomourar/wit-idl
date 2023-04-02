@@ -937,8 +937,11 @@
           },
           "patterns": [
             {
+              "include": "#comment"
+            },
+            {
               "name": "meta.named-type-list.wit",
-              "match": "\\b([\\w][\\-\\w]*)\\s*(\\:)\\s*([^\\)]+)(?=\\s*\\,?)",
+              "match": "\\b([\\w][\\-\\w]*)\\s*(\\:)\\s*([^\\s^\\)]+)(?=\\s*\\,?)",
               "captures": {
                 "1": {
                   "name": "variable.parameter.id.named-type.wit"
@@ -958,9 +961,6 @@
                   ]
                 }
               }
-            },
-            {
-              "include": "#comment"
             }
           ],
           "end": "(\\))\\s*((\\-\\>)(.+))?",

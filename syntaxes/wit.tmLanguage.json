@@ -131,7 +131,7 @@
     "world": {
       "name": "meta.world-item.wit",
       "comment": "Syntax for WIT like `world \"id\" {`",
-      "begin": "^\\b(default\\s+)?(world)\\s+([\\w][\\-\\w]*)\\s*(\\{)",
+      "begin": "^\\b(default\\s+)?(world)\\s+([\\w][\\-\\w]*)\\s*(\\{)\\s*",
       "beginCaptures": {
         "1": {
           "name": "storage.modifier.default.world-item.wit"
@@ -148,9 +148,12 @@
       },
       "patterns": [
         {
+          "include": "#comment"
+        },
+        {
           "name": "meta.export-item.wit",
           "comment": "Syntax for WIT like `export \"id\":`",
-          "begin": "\\s*\\b(export)\\b\\s+([\\w][\\-\\w]*)(?=\\s*\\:)",
+          "begin": "\\s*\\b(export)\\b\\s+([\\w][\\-\\w]*)\\s*(\\:)\\s*",
           "beginCaptures": {
             "1": {
               "name": "keyword.control.export.export-item.wit"
@@ -165,12 +168,10 @@
           "patterns": [
             {
               "include": "#extern"
-            },
-            {
-              "include": "#comment"
             }
           ],
-          "end": "(?<=\\n)"
+          "end": "(?<=\\s*\\n)",
+          "applyEndPatternLast": 1
         },
         {
           "name": "meta.import-item.wit",
@@ -190,26 +191,21 @@
           "patterns": [
             {
               "include": "#extern"
-            },
-            {
-              "include": "#comment"
             }
           ],
-          "end": "(?<=\\n)"
+          "end": "(?<=\\s*\\n)",
+          "applyEndPatternLast": 1
         },
         {
           "include": "#use"
         },
         {
           "include": "#typedef-item"
-        },
-        {
-          "include": "#comment"
         }
       ],
-      "end": "\\}",
+      "end": "\\s*(\\})\\s*",
       "endCaptures": {
-        "0": {
+        "1": {
           "name": "punctuation.definition.block.end.world-item.wit"
         }
       }
@@ -217,7 +213,7 @@
     "interface": {
       "name": "meta.interface-item.wit",
       "comment": "Syntax for WIT like `interface \"id\" {`",
-      "begin": "^\\b(default\\s+)?(interface)\\s+([\\w][\\-\\w]*)\\s*(\\{)",
+      "begin": "^\\b(default\\s+)?(interface)\\s+([\\w][\\-\\w]*)\\s*(\\{)\\s*",
       "beginCaptures": {
         "1": {
           "name": "storage.modifier.default.interface-item.wit"
@@ -234,15 +230,15 @@
       },
       "patterns": [
         {
-          "include": "#interface-items"
+          "include": "#comment"
         },
         {
-          "include": "#comment"
+          "include": "#interface-items"
         }
       ],
-      "end": "\\}",
+      "end": "\\s*(\\})\\s*",
       "endCaptures": {
-        "0": {
+        "1": {
           "name": "punctuation.definition.block.end.interface-item.wit"
         }
       }
@@ -254,7 +250,7 @@
           "name": "meta.interface-type.wit",
           "patterns": [
             {
-              "begin": "\\s*\\b(interface)\\s*(\\{)",
+              "begin": "\\s*\\b(interface)\\b\\s*(\\{)\\s*",
               "beginCaptures": {
                 "1": {
                   "name": "keyword.other.interface.interface-type.wit"
@@ -265,15 +261,15 @@
               },
               "patterns": [
                 {
-                  "include": "#interface-items"
+                  "include": "#comment"
                 },
                 {
-                  "include": "#comment"
+                  "include": "#interface-items"
                 }
               ],
-              "end": "\\}",
+              "end": "\\s*(\\})\\s*",
               "endCaptures": {
-                "0": {
+                "1": {
                   "name": "punctuation.definition.block.end.interface-type.wit"
                 }
               }
@@ -331,7 +327,7 @@
     "use": {
       "name": "meta.use-item.wit",
       "comment": "Syntax for WIT like `use \"id\".`",
-      "begin": "\\s*\\b(use)\\s+([^\\s]+)(\\.)(\\{)",
+      "begin": "\\s*\\b(use)\\b\\s+([^\\s]+)(\\.)(\\{)\\s*",
       "beginCaptures": {
         "1": {
           "name": "keyword.other.use.use-item.wit"
@@ -352,20 +348,20 @@
       },
       "patterns": [
         {
+          "include": "#comment"
+        },
+        {
           "name": "entity.name.type.declaration.use-names-item.use-item.wit",
           "match": "[\\w][\\-\\w]*"
         },
         {
           "name": "keyword.operator.comma.use-names-list.wit",
-          "match": "\\,"
-        },
-        {
-          "include": "#comment"
+          "match": "\\s*(\\,)"
         }
       ],
-      "end": "\\}",
+      "end": "\\s*(\\})\\s*",
       "endCaptures": {
-        "0": {
+        "1": {
           "name": "punctuation.definition.block.end.use-item.wit"
         }
       }
@@ -390,7 +386,7 @@
     "type-definition": {
       "name": "meta.type-item.wit",
       "comment": "Syntax for WIT like `type \"id\" =`",
-      "begin": "\\s*\\b(type)\\s+([\\w][\\-\\w]*)\\s*\\=\\s*(.+)",
+      "begin": "\\s*\\b(type)\\b\\s+([\\w][\\-\\w]*)\\s*(\\=)\\s*",
       "beginCaptures": {
         "1": {
           "name": "keyword.declaration.type.type-item.wit storage.type.wit"
@@ -399,15 +395,17 @@
           "name": "entity.name.type.id.type-item.wit"
         },
         "3": {
-          "name": "meta.types.type-item.wit",
-          "patterns": [
-            {
-              "include": "#types"
-            }
-          ]
+          "name": "eyword.operator.equal.type-item.wit"
         }
       },
-      "end": "$\\n"
+      "patterns": [
+        {
+          "name": "meta.types.type-item.wit",
+          "include": "#types"
+        }
+      ],
+      "end": "(?<=\\s*\\n)",
+      "applyEndPatternLast": 1
     },
     "record": {
       "name": "meta.record-item.wit",
@@ -426,16 +424,16 @@
       },
       "patterns": [
         {
-          "include": "#record-fields"
+          "include": "#comment"
         },
         {
-          "include": "#comment"
+          "include": "#record-fields"
         }
       ],
-      "end": "\\s*(\\})",
+      "end": "\\s*(\\})\\s*",
       "applyEndPatternLast": 1,
       "endCaptures": {
-        "0": {
+        "1": {
           "name": "punctuation.definition.block.end.record-item.wit"
         }
       }
@@ -459,10 +457,10 @@
           "include": "#types"
         }
       ],
-      "end": "\\s*(\\,)?",
+      "end": "\\s*(\\,)?\\s*",
       "applyEndPatternLast": 1,
       "endCaptures": {
-        "0": {
+        "1": {
           "name": "keyword.operator.comma.record-fields.wit"
         }
       }
@@ -484,16 +482,16 @@
       },
       "patterns": [
         {
-          "include": "#flags-fields"
+          "include": "#comment"
         },
         {
-          "include": "#comment"
+          "include": "#flags-fields"
         }
       ],
-      "end": "\\s*(\\})",
+      "end": "\\s*(\\})\\s*",
       "applyEndPatternLast": 1,
       "endCaptures": {
-        "0": {
+        "1": {
           "name": "punctuation.definition.block.end.flags-items.wit"
         }
       }
@@ -502,15 +500,15 @@
       "name": "meta.flags-fields.wit",
       "patterns": [
         {
+          "include": "#comment"
+        },
+        {
           "name": "variable.other.enummember.id.flags-fields.wit",
           "match": "\\s*\\b[\\w][\\-\\w]*\\b"
         },
         {
           "name": "keyword.operator.comma.flags-fields.wit",
           "match": "\\s*(\\,)"
-        },
-        {
-          "include": "#comment"
         }
       ]
     },
@@ -531,42 +529,47 @@
       },
       "patterns": [
         {
+          "include": "#comment"
+        },
+        {
           "include": "#variant-cases"
         },
         {
           "include": "#enum-cases"
-        },
-        {
-          "include": "#comment"
         }
       ],
-      "end": "\\s*(\\})",
+      "end": "\\s*(\\})\\s*",
       "applyEndPatternLast": 1,
       "endCaptures": {
-        "0": {
+        "1": {
           "name": "punctuation.definition.block.end.variant.wit"
         }
       }
     },
     "variant-cases": {
       "name": "meta.variant-cases.wit",
-      "match": "\\s*\\b([\\w][\\-\\w]*)\\s*(\\()(.*)(\\))(?=\\s*\\,?)",
-      "captures": {
+      "begin": "\\s*\\b([\\w][\\-\\w]*)\\b\\s*(\\()\\s*",
+      "beginCaptures": {
         "1": {
           "name": "variable.other.enummember.id.variant-cases.wit"
         },
         "2": {
           "name": "keyword.operator.brackets.round.begin.variant-cases.wit"
-        },
-        "3": {
+        }
+      },
+      "patterns": [
+        {
           "name": "meta.types.variant-cases.wit",
-          "patterns": [
-            {
-              "include": "#types"
-            }
-          ]
+          "include": "#types"
+        }
+      ],
+      "end": "\\s*(\\))\\s*(\\,)?\\s*",
+      "applyEndPatternLast": 1,
+      "endCaptures": {
+        "1": {
+          "name": "keyword.operator.brackets.round.end.variant-cases.wit"
         },
-        "4": {
+        "2": {
           "name": "keyword.operator.brackets.round.end.variant-cases.wit"
         }
       }
@@ -574,7 +577,7 @@
     "enum": {
       "name": "meta.enum-items.wit",
       "comment": "Syntax for WIT like `enum \"id\" {`",
-      "begin": "\\s*\\b(enum)\\s+([\\w][\\-\\w]*)\\s*(\\{)\\s*",
+      "begin": "\\s*\\b(enum)\\b\\s+([\\w][\\-\\w]*)\\s*(\\{)\\s*",
       "beginCaptures": {
         "1": {
           "name": "keyword.other.enum.enum-items.wit"
@@ -588,16 +591,16 @@
       },
       "patterns": [
         {
-          "include": "#enum-cases"
+          "include": "#comment"
         },
         {
-          "include": "#comment"
+          "include": "#enum-cases"
         }
       ],
-      "end": "\\s*(\\})",
+      "end": "\\s*(\\})\\s*",
       "applyEndPatternLast": 1,
       "endCaptures": {
-        "0": {
+        "1": {
           "name": "punctuation.definition.block.end.enum-items.wit"
         }
       }
@@ -606,15 +609,15 @@
       "name": "meta.enum-cases.wit",
       "patterns": [
         {
+          "include": "#comment"
+        },
+        {
           "name": "variable.other.enummember.id.enum-cases.wit",
           "match": "\\s*\\b[\\w][\\-\\w]*\\b"
         },
         {
           "name": "keyword.operator.comma.enum-cases.wit",
-          "match": "\\,"
-        },
-        {
-          "include": "#comment"
+          "match": "\\s*(\\,)"
         }
       ]
     },
@@ -638,24 +641,18 @@
           "include": "#comment"
         },
         {
-          "name": "meta.union-cases.wit",
-          "match": "\\s*\\b([\\w].*)(?=\\s*\\,?)",
-          "captures": {
-            "1": {
-              "name": "meta.types.union-cases.wit",
-              "patterns": [
-                {
-                  "include": "#types"
-                }
-              ]
-            }
-          }
+          "name": "meta.types.union-cases.wit",
+          "include": "#types"
+        },
+        {
+          "name": "keyword.operator.comma.enum-cases.wit",
+          "match": "\\s*(\\,)"
         }
       ],
-      "end": "\\s*(\\})",
+      "end": "\\s*(\\})\\s*",
       "applyEndPatternLast": 1,
       "endCaptures": {
-        "0": {
+        "1": {
           "name": "punctuation.definition.block.end.union-items.wit"
         }
       }
@@ -756,7 +753,7 @@
                   ]
                 }
               ],
-              "end": "\\s*(\\>)",
+              "end": "\\s*(\\>)\\s*",
               "applyEndPatternLast": 1,
               "endCaptures": {
                 "1": {
@@ -784,7 +781,7 @@
                   "include": "#types"
                 }
               ],
-              "end": "\\s*(\\>)",
+              "end": "\\s*(\\>)\\s*",
               "applyEndPatternLast": 1,
               "endCaptures": {
                 "1": {
@@ -806,13 +803,13 @@
               },
               "patterns": [
                 {
-                  "include": "#types"
+                  "include": "#comment"
                 },
                 {
-                  "include": "#comment"
+                  "include": "#types"
                 }
               ],
-              "end": "\\s*(\\>)",
+              "end": "\\s*(\\>)\\s*",
               "applyEndPatternLast": 1,
               "endCaptures": {
                 "1": {
@@ -838,7 +835,7 @@
                 },
                 {
                   "name": "variable.other.inferred-type.result.wit",
-                  "match": "\\s*(\\_)"
+                  "match": "\\s*(?<!\\w)(\\_)(?!\\w)"
                 },
                 {
                   "include": "#types"
@@ -848,7 +845,7 @@
                   "match": "\\s*(\\,)"
                 }
               ],
-              "end": "\\s*(\\>)?",
+              "end": "\\s*(\\>)?\\s*",
               "applyEndPatternLast": 1,
               "endCaptures": {
                 "1": {
@@ -859,7 +856,7 @@
             "handle": {
               "name": "meta.handle.ty.wit",
               "comment": "Syntax for WIT types such as handle",
-              "match": "\\s*\\b(borrow)(\\<)\\s*([\\w][\\-\\w]*)\\s*(\\>)",
+              "match": "\\s*\\b(borrow)\\b(\\<)\\s*([\\w][\\-\\w]*)\\s*(\\>)\\s*",
               "captures": {
                 "1": {
                   "name": "entity.name.type.borrow.handle.wit"
@@ -887,7 +884,7 @@
     "resource": {
       "name": "meta.resource.wit",
       "comment": "Syntax for WIT like `resource \"id\" {`",
-      "begin": "\\s*\\b(resource)\\b\\s+([\\w][\\-\\w]*)\\s*(\\{)",
+      "begin": "\\s*\\b(resource)\\b\\s+([\\w][\\-\\w]*)\\s*(\\{)\\s*",
       "beginCaptures": {
         "1": {
           "name": "keyword.other.resource.wit"
@@ -901,15 +898,15 @@
       },
       "patterns": [
         {
-          "include": "#function"
+          "include": "#comment"
         },
         {
-          "include": "#comment"
+          "include": "#function"
         }
       ],
-      "end": "\\}",
+      "end": "\\s*(\\})\\s*",
       "endCaptures": {
-        "0": {
+        "1": {
           "name": "punctuation.definition.block.end.resource.wit"
         }
       }
@@ -917,7 +914,7 @@
     "function": {
       "name": "meta.func-item.wit",
       "comment": "This is a function item that includes its identifier. This starts with a variable name, succeded by a `func` keyword and ends with `new line`",
-      "begin": "\\s*\\b(static\\s+)?([\\w][\\-\\w]*)\\s*(\\:)",
+      "begin": "\\s*\\b(static\\s+)?([\\w][\\-\\w]*)\\s*(\\:)\\s*",
       "beginCaptures": {
         "1": {
           "name": "storage.modifier.static.func-item.wit"
@@ -934,7 +931,7 @@
           "include": "#function-definition"
         }
       ],
-      "end": "(?<=\\n)",
+      "end": "(?<=\\s*\\n)",
       "applyEndPatternLast": 1
     },
     "function-definition": {
@@ -969,13 +966,13 @@
               },
               "patterns": [
                 {
-                  "include": "#types"
+                  "include": "#comment"
                 },
                 {
-                  "include": "#comment"
+                  "include": "#types"
                 }
               ],
-              "end": "\\s*(\\,)?",
+              "end": "\\s*(\\,)?\\s*",
               "applyEndPatternLast": 1,
               "endCaptures": {
                 "1": {
@@ -984,7 +981,7 @@
               }
             }
           ],
-          "end": "\\s*(\\))\\s*((\\-\\>)(.+))?",
+          "end": "\\s*(\\))\\s*((\\-\\>)(.+))?\\s*",
           "applyEndPatternLast": 1,
           "endCaptures": {
             "1": {
@@ -1000,10 +997,10 @@
               "name": "meta.types.result-list.wit",
               "patterns": [
                 {
-                  "include": "#types"
+                  "include": "#comment"
                 },
                 {
-                  "include": "#comment"
+                  "include": "#types"
                 }
               ]
             }

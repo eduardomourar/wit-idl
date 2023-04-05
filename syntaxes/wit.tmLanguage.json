@@ -79,11 +79,11 @@
     "operator": {
       "patterns": [
         {
-          "name": "keyword.operator.equal.wit",
+          "name": "punctuation.equal.wit",
           "match": "\\="
         },
         {
-          "name": "keyword.operator.comma.wit",
+          "name": "punctuation.comma.wit",
           "match": "\\,"
         },
         {
@@ -91,31 +91,31 @@
           "match": "\\:"
         },
         {
-          "name": "keyword.operator.semicolon.wit",
+          "name": "punctuation.semicolon.wit",
           "match": "\\;"
         },
         {
-          "name": "keyword.operator.brackets.round.begin.wit",
+          "name": "punctuation.brackets.round.begin.wit",
           "match": "\\("
         },
         {
-          "name": "keyword.operator.brackets.round.end.wit",
+          "name": "punctuation.brackets.round.end.wit",
           "match": "\\)"
         },
         {
-          "name": "keyword.operator.brackets.curly.begin.wit",
+          "name": "punctuation.brackets.curly.begin.wit",
           "match": "\\{"
         },
         {
-          "name": "keyword.operator.brackets.curly.end.wit",
+          "name": "punctuation.brackets.curly.end.wit",
           "match": "\\}"
         },
         {
-          "name": "keyword.operator.angle.begin.wit",
+          "name": "punctuation.brackets.angle.begin.wit",
           "match": "\\<"
         },
         {
-          "name": "keyword.operator.angle.end.wit",
+          "name": "punctuation.brackets.angle.end.wit",
           "match": "\\>"
         },
         {
@@ -143,7 +143,7 @@
           "name": "entity.name.type.id.world-item.wit"
         },
         "4": {
-          "name": "punctuation.definition.block.begin.world-item.wit"
+          "name": "punctuation.brackets.curly.begin.wit"
         }
       },
       "patterns": [
@@ -206,7 +206,7 @@
       "end": "\\s*(\\})\\s*",
       "endCaptures": {
         "1": {
-          "name": "punctuation.definition.block.end.world-item.wit"
+          "name": "punctuation.brackets.curly.end.wit"
         }
       }
     },
@@ -225,7 +225,7 @@
           "name": "entity.name.type.id.interface-item.wit"
         },
         "4": {
-          "name": "punctuation.definition.block.begin.interface-item.wit"
+          "name": "punctuation.brackets.curly.begin.wit"
         }
       },
       "patterns": [
@@ -239,7 +239,7 @@
       "end": "\\s*(\\})\\s*",
       "endCaptures": {
         "1": {
-          "name": "punctuation.definition.block.end.interface-item.wit"
+          "name": "punctuation.brackets.curly.end.wit"
         }
       }
     },
@@ -256,7 +256,7 @@
                   "name": "keyword.other.interface.interface-type.wit"
                 },
                 "2": {
-                  "name": "punctuation.definition.block.begin.interface-type.wit"
+                  "name": "ppunctuation.brackets.curly.begin.wit"
                 }
               },
               "patterns": [
@@ -270,7 +270,7 @@
               "end": "\\s*(\\})\\s*",
               "endCaptures": {
                 "1": {
-                  "name": "punctuation.definition.block.end.interface-type.wit"
+                  "name": "punctuation.brackets.curly.end.wit"
                 }
               }
             }
@@ -343,7 +343,7 @@
           "name": "keyword.operator.namespace-separator.use-item.wit"
         },
         "4": {
-          "name": "punctuation.definition.block.begin.use-item.wit"
+          "name": "punctuation.brackets.curly.begin.wit"
         }
       },
       "patterns": [
@@ -355,14 +355,14 @@
           "match": "[\\w][\\-\\w]*"
         },
         {
-          "name": "keyword.operator.comma.wit",
+          "name": "punctuation.comma.wit",
           "match": "\\s*(\\,)"
         }
       ],
       "end": "\\s*(\\})\\s*",
       "endCaptures": {
         "1": {
-          "name": "punctuation.definition.block.end.use-item.wit"
+          "name": "punctuation.brackets.curly.end.wit"
         }
       }
     },
@@ -395,7 +395,7 @@
           "name": "entity.name.type.id.type-item.wit"
         },
         "3": {
-          "name": "keyword.operator.equal.wit"
+          "name": "punctuation.equal.wit"
         }
       },
       "patterns": [
@@ -419,7 +419,7 @@
           "name": "entity.name.type.id.record-item.wit"
         },
         "3": {
-          "name": "punctuation.definition.block.begin.record-item.wit"
+          "name": "punctuation.brackets.curly.begin.wit"
         }
       },
       "patterns": [
@@ -434,7 +434,7 @@
       "applyEndPatternLast": 1,
       "endCaptures": {
         "1": {
-          "name": "punctuation.definition.block.end.record-item.wit"
+          "name": "punctuation.brackets.curly.end.wit"
         }
       }
     },
@@ -454,6 +454,7 @@
           "include": "#comment"
         },
         {
+          "name": "meta.types.record-fields.wit",
           "include": "#types"
         }
       ],
@@ -461,7 +462,7 @@
       "applyEndPatternLast": 1,
       "endCaptures": {
         "1": {
-          "name": "keyword.operator.comma.wit"
+          "name": "punctuation.comma.wit"
         }
       }
     },
@@ -477,7 +478,7 @@
           "name": "entity.name.type.id.flags-items.wit"
         },
         "3": {
-          "name": "punctuation.definition.block.begin.flags-items.wit"
+          "name": "punctuation.brackets.curly.begin.wit"
         }
       },
       "patterns": [
@@ -492,7 +493,7 @@
       "applyEndPatternLast": 1,
       "endCaptures": {
         "1": {
-          "name": "punctuation.definition.block.end.flags-items.wit"
+          "name": "punctuation.brackets.curly.end.wit"
         }
       }
     },
@@ -507,7 +508,7 @@
           "match": "\\s*\\b[\\w][\\-\\w]*\\b"
         },
         {
-          "name": "keyword.operator.comma.wit",
+          "name": "punctuation.comma.wit",
           "match": "\\s*(\\,)"
         }
       ]
@@ -524,7 +525,7 @@
           "name": "entity.name.type.id.variant.wit"
         },
         "3": {
-          "name": "punctuation.definition.block.begin.variant.wit"
+          "name": "punctuation.brackets.curly.begin.wit"
         }
       },
       "patterns": [
@@ -542,7 +543,7 @@
       "applyEndPatternLast": 1,
       "endCaptures": {
         "1": {
-          "name": "punctuation.definition.block.end.variant.wit"
+          "name": "punctuation.brackets.curly.end.wit"
         }
       }
     },
@@ -554,7 +555,7 @@
           "name": "variable.other.enummember.id.variant-cases.wit"
         },
         "2": {
-          "name": "keyword.operator.brackets.round.begin.variant-cases.wit"
+          "name": "punctuation.brackets.round.begin.wit"
         }
       },
       "patterns": [
@@ -567,10 +568,10 @@
       "applyEndPatternLast": 1,
       "endCaptures": {
         "1": {
-          "name": "keyword.operator.brackets.round.end.variant-cases.wit"
+          "name": "punctuation.brackets.round.end.wit"
         },
         "2": {
-          "name": "keyword.operator.brackets.round.end.variant-cases.wit"
+          "name": "punctuation.comma.wit"
         }
       }
     },
@@ -586,7 +587,7 @@
           "name": "entity.name.type.id.enum-items.wit"
         },
         "3": {
-          "name": "punctuation.definition.block.begin.enum-items.wit"
+          "name": "punctuation.brackets.curly.begin.wit"
         }
       },
       "patterns": [
@@ -601,7 +602,7 @@
       "applyEndPatternLast": 1,
       "endCaptures": {
         "1": {
-          "name": "punctuation.definition.block.end.enum-items.wit"
+          "name": "punctuation.brackets.curly.end.wit"
         }
       }
     },
@@ -616,7 +617,7 @@
           "match": "\\s*\\b[\\w][\\-\\w]*\\b"
         },
         {
-          "name": "keyword.operator.comma.wit",
+          "name": "punctuation.comma.wit",
           "match": "\\s*(\\,)"
         }
       ]
@@ -633,7 +634,7 @@
           "name": "entity.name.type.declaration.id.union-items.wit"
         },
         "3": {
-          "name": "punctuation.definition.block.begin.union-items.wit"
+          "name": "punctuation.brackets.curly.begin.wit"
         }
       },
       "patterns": [
@@ -645,7 +646,7 @@
           "include": "#types"
         },
         {
-          "name": "keyword.operator.comma.wit",
+          "name": "punctuation.comma.wit",
           "match": "\\s*(\\,)"
         }
       ],
@@ -653,7 +654,7 @@
       "applyEndPatternLast": 1,
       "endCaptures": {
         "1": {
-          "name": "punctuation.definition.block.end.union-items.wit"
+          "name": "punctuation.brackets.curly.end.wit"
         }
       }
     },
@@ -734,7 +735,7 @@
                   "name": "entity.name.type.tuple.wit"
                 },
                 "2": {
-                  "name": "keyword.operator.angle.begin.tuple.wit"
+                  "name": "punctuation.brackets.angle.begin.wit"
                 }
               },
               "patterns": [
@@ -744,10 +745,11 @@
                 {
                   "patterns": [
                     {
+                      "name": "meta.types.tuple.wit",
                       "include": "#types"
                     },
                     {
-                      "name": "keyword.operator.comma.wit",
+                      "name": "punctuation.comma.wit",
                       "match": "\\s*(\\,)"
                     }
                   ]
@@ -757,7 +759,7 @@
               "applyEndPatternLast": 1,
               "endCaptures": {
                 "1": {
-                  "name": "keyword.operator.angle.end.tuple.wit"
+                  "name": "punctuation.brackets.angle.end.wit"
                 }
               }
             },
@@ -770,7 +772,7 @@
                   "name": "entity.name.type.list.wit"
                 },
                 "2": {
-                  "name": "keyword.operator.angle.begin.list.wit"
+                  "name": "punctuation.brackets.angle.begin.wit"
                 }
               },
               "patterns": [
@@ -778,6 +780,7 @@
                   "include": "#comment"
                 },
                 {
+                  "name": "meta.types.list.wit",
                   "include": "#types"
                 }
               ],
@@ -785,7 +788,7 @@
               "applyEndPatternLast": 1,
               "endCaptures": {
                 "1": {
-                  "name": "keyword.operator.angle.end.list.wit"
+                  "name": "punctuation.brackets.angle.end.wit"
                 }
               }
             },
@@ -798,7 +801,7 @@
                   "name": "entity.name.type.option.wit"
                 },
                 "2": {
-                  "name": "keyword.operator.angle.begin.option.wit"
+                  "name": "punctuation.brackets.angle.begin.wit"
                 }
               },
               "patterns": [
@@ -806,6 +809,7 @@
                   "include": "#comment"
                 },
                 {
+                  "name": "meta.types.option.wit",
                   "include": "#types"
                 }
               ],
@@ -813,7 +817,7 @@
               "applyEndPatternLast": 1,
               "endCaptures": {
                 "1": {
-                  "name": "keyword.operator.angle.end.option.wit"
+                  "name": "punctuation.brackets.angle.end.wit"
                 }
               }
             },
@@ -826,7 +830,7 @@
                   "name": "entity.name.type.result.wit"
                 },
                 "2": {
-                  "name": "keyword.operator.angle.begin.result.wit"
+                  "name": "punctuation.brackets.angle.begin.wit"
                 }
               },
               "patterns": [
@@ -838,10 +842,11 @@
                   "match": "\\s*(?<!\\w)(\\_)(?!\\w)"
                 },
                 {
+                  "name": "meta.types.result.wit",
                   "include": "#types"
                 },
                 {
-                  "name": "keyword.operator.comma.wit",
+                  "name": "punctuation.comma.wit",
                   "match": "\\s*(\\,)"
                 }
               ],
@@ -849,7 +854,7 @@
               "applyEndPatternLast": 1,
               "endCaptures": {
                 "1": {
-                  "name": "keyword.operator.angle.end.result.wit"
+                  "name": "punctuation.brackets.angle.end.wit"
                 }
               }
             },
@@ -862,13 +867,13 @@
                   "name": "entity.name.type.borrow.handle.wit"
                 },
                 "2": {
-                  "name": "keyword.operator.angle.begin.handle.wit"
+                  "name": "punctuation.brackets.angle.begin.wit"
                 },
                 "3": {
                   "name": "entity.name.type.id.handle.wit"
                 },
                 "4": {
-                  "name": "keyword.operator.angle.end.handle.wit"
+                  "name": "punctuation.brackets.angle.end.wit"
                 }
               }
             }
@@ -893,7 +898,7 @@
           "name": "entity.name.type.id.resource.wit"
         },
         "3": {
-          "name": "punctuation.definition.block.begin.resource.wit"
+          "name": "punctuation.brackets.curly.begin.wit"
         }
       },
       "patterns": [
@@ -907,7 +912,7 @@
       "end": "\\s*(\\})\\s*",
       "endCaptures": {
         "1": {
-          "name": "punctuation.definition.block.end.resource.wit"
+          "name": "punctuation.brackets.curly.end.wit"
         }
       }
     },
@@ -946,7 +951,7 @@
               "name": "keyword.other.func.func-type.wit"
             },
             "2": {
-              "name": "keyword.operator.brackets.round.begin.func-type.wit"
+              "name": "punctuation.brackets.round.begin.wit"
             }
           },
           "patterns": [
@@ -969,6 +974,7 @@
                   "include": "#comment"
                 },
                 {
+                  "name": "meta.types.named-type-list.wit",
                   "include": "#types"
                 }
               ],
@@ -976,7 +982,7 @@
               "applyEndPatternLast": 1,
               "endCaptures": {
                 "1": {
-                  "name": "keyword.operator.comma.wit"
+                  "name": "punctuation.comma.wit"
                 }
               }
             }
@@ -985,13 +991,13 @@
           "applyEndPatternLast": 1,
           "endCaptures": {
             "1": {
-              "name": "keyword.operator.brackets.round.end.func-type.wit"
+              "name": "punctuation.brackets.round.end.wit"
             },
             "2": {
               "name": "meta.result-list.wit"
             },
             "3": {
-              "name": "keyword.operator.arrow.skinny.func-type.wit"
+              "name": "keyword.operator.arrow.skinny.wit"
             },
             "4": {
               "name": "meta.types.result-list.wit",

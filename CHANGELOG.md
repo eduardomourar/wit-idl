@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.6](https://github.com/eduardomourar/wit-idl/compare/wit-idl-v0.0.5...wit-idl-v0.0.6) (2023-04-05)
+
+
+### Bug Fixes
+
+* set apply end pattern last to true ([#9](https://github.com/eduardomourar/wit-idl/issues/9)) ([7df2442](https://github.com/eduardomourar/wit-idl/commit/7df2442e1776ebc5350afccadc1c9181f0f6e74b))
+
 ## [0.0.5](https://github.com/eduardomourar/wit-idl/compare/wit-idl-v0.0.4...wit-idl-v0.0.5) (2023-04-02)
 
 

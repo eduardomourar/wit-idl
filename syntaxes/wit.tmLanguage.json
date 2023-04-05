@@ -150,7 +150,7 @@
         {
           "name": "meta.export-item.wit",
           "comment": "Syntax for WIT like `export \"id\":`",
-          "begin": "\\b(export)\\s+([\\w][\\-\\w]*)(?=\\s*\\:)",
+          "begin": "\\s*\\b(export)\\b\\s+([\\w][\\-\\w]*)(?=\\s*\\:)",
           "beginCaptures": {
             "1": {
               "name": "keyword.control.export.export-item.wit"
@@ -175,7 +175,7 @@
         {
           "name": "meta.import-item.wit",
           "comment": "Syntax for WIT like `import \"id\":`",
-          "begin": "\\b(import)\\s+([\\w][\\-\\w]*)\\s*(\\:)",
+          "begin": "\\s*\\b(import)\\s+([\\w][\\-\\w]*)\\s*(\\:)",
           "beginCaptures": {
             "1": {
               "name": "keyword.control.import.import-item.wit"
@@ -254,7 +254,7 @@
           "name": "meta.interface-type.wit",
           "patterns": [
             {
-              "begin": "\\b(interface)\\s*(\\{)",
+              "begin": "\\s*\\b(interface)\\s*(\\{)",
               "beginCaptures": {
                 "1": {
                   "name": "keyword.other.interface.interface-type.wit"
@@ -331,7 +331,7 @@
     "use": {
       "name": "meta.use-item.wit",
       "comment": "Syntax for WIT like `use \"id\".`",
-      "begin": "\\b(use)\\s+([^\\s]+)(\\.)(\\{)",
+      "begin": "\\s*\\b(use)\\s+([^\\s]+)(\\.)(\\{)",
       "beginCaptures": {
         "1": {
           "name": "keyword.other.use.use-item.wit"
@@ -390,7 +390,7 @@
     "type-definition": {
       "name": "meta.type-item.wit",
       "comment": "Syntax for WIT like `type \"id\" =`",
-      "begin": "\\b(type)\\s+([\\w][\\-\\w]*)\\s*\\=\\s*(.+)",
+      "begin": "\\s*\\b(type)\\s+([\\w][\\-\\w]*)\\s*\\=\\s*(.+)",
       "beginCaptures": {
         "1": {
           "name": "keyword.declaration.type.type-item.wit storage.type.wit"
@@ -412,7 +412,7 @@
     "record": {
       "name": "meta.record-item.wit",
       "comment": "Syntax for WIT like `record \"id\" {`",
-      "begin": "\\b(record)\\s+([\\w][\\-\\w]*)\\s*(\\{)",
+      "begin": "\\s*\\b(record)\\b\\s+([\\w][\\-\\w]*)\\s*(\\{)\\s*",
       "beginCaptures": {
         "1": {
           "name": "keyword.declaration.record.record-item.wit"
@@ -432,7 +432,8 @@
           "include": "#comment"
         }
       ],
-      "end": "(?<=\\})",
+      "end": "\\s*(\\})",
+      "applyEndPatternLast": 1,
       "endCaptures": {
         "0": {
           "name": "punctuation.definition.block.end.record-item.wit"
@@ -441,28 +442,35 @@
     },
     "record-fields": {
       "name": "meta.record-fields.wit",
-      "match": "\\b([\\w][\\-\\w]*)\\s*(\\:)\\s*(.+)(?=\\s*\\,?)",
-      "captures": {
+      "begin": "\\s*\\b([\\w][\\-\\w]*)\\b\\s*(\\:)\\s*",
+      "beginCaptures": {
         "1": {
           "name": "variable.declaration.id.record-fields.wit"
         },
         "2": {
           "name": "keyword.operator.key-value.record-fields.wit"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#comment"
         },
-        "3": {
-          "name": "meta.types.record-fields.wit",
-          "patterns": [
-            {
-              "include": "#types"
-            }
-          ]
+        {
+          "include": "#types"
+        }
+      ],
+      "end": "\\s*(\\,)?",
+      "applyEndPatternLast": 1,
+      "endCaptures": {
+        "0": {
+          "name": "keyword.operator.comma.record-fields.wit"
         }
       }
     },
     "flags": {
       "name": "meta.flags-items.wit",
       "comment": "Syntax for WIT like `flags \"id\" {`",
-      "begin": "\\b(flags)\\s+([\\w][\\-\\w]*)\\s*(\\{)",
+      "begin": "\\s*\\b(flags)\\s+([\\w][\\-\\w]*)\\s*(\\{)\\s*",
       "beginCaptures": {
         "1": {
           "name": "keyword.other.flags.flags-items.wit"
@@ -482,7 +490,8 @@
           "include": "#comment"
         }
       ],
-      "end": "(?<=\\})",
+      "end": "\\s*(\\})",
+      "applyEndPatternLast": 1,
       "endCaptures": {
         "0": {
           "name": "punctuation.definition.block.end.flags-items.wit"
@@ -494,11 +503,11 @@
       "patterns": [
         {
           "name": "variable.other.enummember.id.flags-fields.wit",
-          "match": "\\b[\\w][\\-\\w]*\\b"
+          "match": "\\s*\\b[\\w][\\-\\w]*\\b"
         },
         {
           "name": "keyword.operator.comma.flags-fields.wit",
-          "match": "\\,"
+          "match": "\\s*(\\,)"
         },
         {
           "include": "#comment"
@@ -508,7 +517,7 @@
     "variant": {
       "name": "meta.variant.wit",
       "comment": "Syntax for WIT like `variant \"id\" {`",
-      "begin": "\\b(variant)\\s+([\\w][\\-\\w]*)\\s*(\\{)",
+      "begin": "\\s*\\b(variant)\\s+([\\w][\\-\\w]*)\\s*(\\{)\\s*",
       "beginCaptures": {
         "1": {
           "name": "keyword.other.variant.wit"
@@ -531,7 +540,8 @@
           "include": "#comment"
         }
       ],
-      "end": "(?<=\\})",
+      "end": "\\s*(\\})",
+      "applyEndPatternLast": 1,
       "endCaptures": {
         "0": {
           "name": "punctuation.definition.block.end.variant.wit"
@@ -540,7 +550,7 @@
     },
     "variant-cases": {
       "name": "meta.variant-cases.wit",
-      "match": "\\b([\\w][\\-\\w]*)\\s*(\\()(.*)(\\))(?=\\s*\\,?)",
+      "match": "\\s*\\b([\\w][\\-\\w]*)\\s*(\\()(.*)(\\))(?=\\s*\\,?)",
       "captures": {
         "1": {
           "name": "variable.other.enummember.id.variant-cases.wit"
@@ -564,7 +574,7 @@
     "enum": {
       "name": "meta.enum-items.wit",
       "comment": "Syntax for WIT like `enum \"id\" {`",
-      "begin": "\\b(enum)\\s+([\\w][\\-\\w]*)\\s*(\\{)",
+      "begin": "\\s*\\b(enum)\\s+([\\w][\\-\\w]*)\\s*(\\{)\\s*",
       "beginCaptures": {
         "1": {
           "name": "keyword.other.enum.enum-items.wit"
@@ -584,7 +594,8 @@
           "include": "#comment"
         }
       ],
-      "end": "(?<=\\})",
+      "end": "\\s*(\\})",
+      "applyEndPatternLast": 1,
       "endCaptures": {
         "0": {
           "name": "punctuation.definition.block.end.enum-items.wit"
@@ -596,7 +607,7 @@
       "patterns": [
         {
           "name": "variable.other.enummember.id.enum-cases.wit",
-          "match": "\\b[\\w][\\-\\w]*\\b"
+          "match": "\\s*\\b[\\w][\\-\\w]*\\b"
         },
         {
           "name": "keyword.operator.comma.enum-cases.wit",
@@ -610,7 +621,7 @@
     "union": {
       "name": "meta.union-items.wit",
       "comment": "Syntax for WIT like `union \"id\" {`",
-      "begin": "(union)\\s+([\\w][\\-\\w]*)\\s*(\\{)",
+      "begin": "\\s*\\b(union)\\b\\s+([\\w][\\-\\w]*)\\s*(\\{)\\s*",
       "beginCaptures": {
         "1": {
           "name": "keyword.other.union.union-items.wit"
@@ -628,7 +639,7 @@
         },
         {
           "name": "meta.union-cases.wit",
-          "match": "\\b([\\w].*)(?=\\s*\\,?)",
+          "match": "\\s*\\b([\\w].*)(?=\\s*\\,?)",
           "captures": {
             "1": {
               "name": "meta.types.union-cases.wit",
@@ -641,7 +652,8 @@
           }
         }
       ],
-      "end": "(?<=\\})",
+      "end": "\\s*(\\})",
+      "applyEndPatternLast": 1,
       "endCaptures": {
         "0": {
           "name": "punctuation.definition.block.end.union-items.wit"
@@ -681,17 +693,17 @@
             "numeric": {
               "name": "entity.name.type.numeric.wit",
               "comment": "Syntax for numeric types identifiers such as signed and unsigned integers and floating point identifiers",
-              "match": "\\b(u8|u16|u32|u64|s8|s16|s32|s64|float32|float64)\\b"
+              "match": "\\s*\\b(u8|u16|u32|u64|s8|s16|s32|s64|float32|float64)\\b"
             },
             "boolean": {
               "name": "entity.name.type.boolean.wit",
               "comment": "Syntax for boolean types such as bool",
-              "match": "\\b(bool)\\b"
+              "match": "\\s*\\b(bool)\\b"
             },
             "string": {
               "name": "entity.name.type.string.wit",
               "comment": "Syntax for primitive types such as string and char",
-              "match": "\\b(string|char)\\b"
+              "match": "\\s*\\b(string|char)\\b"
             }
           }
         },
@@ -719,30 +731,35 @@
             "tuple": {
               "name": "meta.tuple.ty.wit",
               "comment": "Syntax for WIT types such as tuple",
-              "match": "\\b(tuple)(\\<)(.+)(\\>)",
-              "captures": {
+              "begin": "\\s*\\b(tuple)\\b(\\<)\\s*",
+              "beginCaptures": {
                 "1": {
                   "name": "entity.name.type.tuple.wit"
                 },
                 "2": {
                   "name": "keyword.operator.angle.begin.tuple.wit"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "#comment"
                 },
-                "3": {
-                  "name": "meta.types.tuple.wit",
+                {
                   "patterns": [
                     {
                       "include": "#types"
                     },
                     {
                       "name": "keyword.operator.comma.tuple.wit",
-                      "match": "\\,"
-                    },
-                    {
-                      "include": "#comment"
+                      "match": "\\s*(\\,)"
                     }
                   ]
-                },
-                "4": {
+                }
+              ],
+              "end": "\\s*(\\>)",
+              "applyEndPatternLast": 1,
+              "endCaptures": {
+                "1": {
                   "name": "keyword.operator.angle.end.tuple.wit"
                 }
               }
@@ -750,26 +767,27 @@
             "list": {
               "name": "meta.list.ty.wit",
               "comment": "Syntax for WIT types such as list",
-              "match": "\\b(list)(\\<)(.+)(\\>)",
-              "captures": {
+              "begin": "\\s*\\b(list)\\b(\\<)\\s*",
+              "beginCaptures": {
                 "1": {
                   "name": "entity.name.type.list.wit"
                 },
                 "2": {
                   "name": "keyword.operator.angle.begin.list.wit"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "#comment"
                 },
-                "3": {
-                  "name": "meta.types.list.wit",
-                  "patterns": [
-                    {
-                      "include": "#types"
-                    },
-                    {
-                      "include": "#comment"
-                    }
-                  ]
-                },
-                "4": {
+                {
+                  "include": "#types"
+                }
+              ],
+              "end": "\\s*(\\>)",
+              "applyEndPatternLast": 1,
+              "endCaptures": {
+                "1": {
                   "name": "keyword.operator.angle.end.list.wit"
                 }
               }
@@ -777,26 +795,27 @@
             "option": {
               "name": "meta.option.ty.wit",
               "comment": "Syntax for WIT types such as option",
-              "match": "\\b(option)(\\<)(.+)(\\>)",
-              "captures": {
+              "begin": "\\s*\\b(option)\\b(\\<)\\s*",
+              "beginCaptures": {
                 "1": {
                   "name": "entity.name.type.option.wit"
                 },
                 "2": {
                   "name": "keyword.operator.angle.begin.option.wit"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "#types"
                 },
-                "3": {
-                  "name": "meta.types.option.wit",
-                  "patterns": [
-                    {
-                      "include": "#types"
-                    },
-                    {
-                      "include": "#comment"
-                    }
-                  ]
-                },
-                "4": {
+                {
+                  "include": "#comment"
+                }
+              ],
+              "end": "\\s*(\\>)",
+              "applyEndPatternLast": 1,
+              "endCaptures": {
+                "1": {
                   "name": "keyword.operator.angle.end.option.wit"
                 }
               }
@@ -804,37 +823,35 @@
             "result": {
               "name": "meta.result.ty.wit",
               "comment": "Syntax for WIT types such as result",
-              "match": "\\b(result)((\\<)(.+)(\\>))?",
-              "captures": {
+              "begin": "\\s*\\b(result)\\b(\\<)?\\s*",
+              "beginCaptures": {
                 "1": {
                   "name": "entity.name.type.result.wit"
                 },
-                "3": {
+                "2": {
                   "name": "keyword.operator.angle.begin.result.wit"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "#comment"
                 },
-                "4": {
-                  "name": "meta.types.result.wit",
-                  "patterns": [
-                    {
-                      "name": "variable.other.inferred-type.result.wit",
-                      "match": "\\_"
-                    },
-                    {
-                      "include": "#types"
-                    },
-                    {
-                      "name": "keyword.operator.comma.result.wit",
-                      "match": "\\,"
-                    },
-                    {
-                      "match": "\\s"
-                    },
-                    {
-                      "include": "#comment"
-                    }
-                  ]
+                {
+                  "name": "variable.other.inferred-type.result.wit",
+                  "match": "\\s*(\\_)"
                 },
-                "5": {
+                {
+                  "include": "#types"
+                },
+                {
+                  "name": "keyword.operator.comma.result.wit",
+                  "match": "\\s*(\\,)"
+                }
+              ],
+              "end": "\\s*(\\>)?",
+              "applyEndPatternLast": 1,
+              "endCaptures": {
+                "1": {
                   "name": "keyword.operator.angle.end.result.wit"
                 }
               }
@@ -842,7 +859,7 @@
             "handle": {
               "name": "meta.handle.ty.wit",
               "comment": "Syntax for WIT types such as handle",
-              "match": "\\b(borrow)(\\<)\\s*([\\w][\\-\\w]*)\\s*(\\>)",
+              "match": "\\s*\\b(borrow)(\\<)\\s*([\\w][\\-\\w]*)\\s*(\\>)",
               "captures": {
                 "1": {
                   "name": "entity.name.type.borrow.handle.wit"
@@ -863,14 +880,14 @@
         "identifier": {
           "name": "entity.name.type.id.wit",
           "comment": "Syntax for WIT types based on its identifier",
-          "match": "\\b[\\w][\\-\\w]*\\b"
+          "match": "\\s*\\b[\\w][\\-\\w]*\\b"
         }
       }
     },
     "resource": {
       "name": "meta.resource.wit",
       "comment": "Syntax for WIT like `resource \"id\" {`",
-      "begin": "(resource)\\s+([\\w][\\-\\w]*)\\s*(\\{)",
+      "begin": "\\s*\\b(resource)\\b\\s+([\\w][\\-\\w]*)\\s*(\\{)",
       "beginCaptures": {
         "1": {
           "name": "keyword.other.resource.wit"
@@ -900,7 +917,7 @@
     "function": {
       "name": "meta.func-item.wit",
       "comment": "This is a function item that includes its identifier. This starts with a variable name, succeded by a `func` keyword and ends with `new line`",
-      "begin": "\\b(static\\s+)?([\\w][\\-\\w]*)\\s*(\\:)",
+      "begin": "\\s*\\b(static\\s+)?([\\w][\\-\\w]*)\\s*(\\:)",
       "beginCaptures": {
         "1": {
           "name": "storage.modifier.static.func-item.wit"
@@ -926,7 +943,7 @@
       "patterns": [
         {
           "name": "meta.function.wit",
-          "begin": "\\b(func)\\s*(\\()",
+          "begin": "\\s*\\b(func)\\b\\s*(\\()\\s*",
           "beginCaptures": {
             "1": {
               "name": "keyword.other.func.func-type.wit"
@@ -941,29 +958,34 @@
             },
             {
               "name": "meta.named-type-list.wit",
-              "match": "\\b([\\w][\\-\\w]*)\\s*(\\:)\\s*([^\\s^\\)]+)(?=\\s*\\,?)",
-              "captures": {
+              "begin": "\\s*\\b([\\w][\\-\\w]*)\\b\\s*(\\:)\\s*",
+              "beginCaptures": {
                 "1": {
                   "name": "variable.parameter.id.named-type.wit"
                 },
                 "2": {
                   "name": "keyword.operator.key-value.named-type.wit"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "#types"
                 },
-                "3": {
-                  "name": "meta.types.named-type-list.wit",
-                  "patterns": [
-                    {
-                      "include": "#types"
-                    },
-                    {
-                      "include": "#comment"
-                    }
-                  ]
+                {
+                  "include": "#comment"
+                }
+              ],
+              "end": "\\s*(\\,)?",
+              "applyEndPatternLast": 1,
+              "endCaptures": {
+                "1": {
+                  "name": "keyword.operator.comma.function.wit"
                 }
               }
             }
           ],
-          "end": "(\\))\\s*((\\-\\>)(.+))?",
+          "end": "\\s*(\\))\\s*((\\-\\>)(.+))?",
+          "applyEndPatternLast": 1,
           "endCaptures": {
             "1": {
               "name": "keyword.operator.brackets.round.end.func-type.wit"

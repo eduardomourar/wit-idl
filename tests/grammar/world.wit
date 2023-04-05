@@ -4,12 +4,12 @@ default world some-world {
 // <----    storage.modifier.default.world-item.wit
 //      ^^^^^   keyword.declaration.world.world-item.wit storage.type.wit
 //            ^^^^^^^^^^   entity.name.type.id.world-item.wit
-//                       ^ punctuation.definition.block.begin.world-item.wit
+//                       ^ meta.world-item.wit punctuation.brackets.curly.begin.wit
 
   import filesystem: filesystem.filesystem
 //^^^^^^   keyword.control.import.import-item.wit
 //       ^^^^^^^^^^   variable.other.id.import-item.wit
-//                 ^   keyword.operator.key-value.import-item.wit
+//                 ^   meta.import-item.wit keyword.operator.key-value.wit
 //                   ^^^^^^^^^^   entity.name.namespace.id.use-path.wit
 //                             ^   keyword.operator.namespace-separator.use-path.wit
 //                              ^^^^^^^^^^   entity.name.namespace.id.use-path.wit
@@ -17,7 +17,7 @@ default world some-world {
   import random: pkg.random
 //^^^^^^   keyword.control.import.import-item.wit
 //       ^^^^^^   variable.other.id.import-item.wit
-//             ^   keyword.operator.key-value.import-item.wit
+//             ^   meta.import-item.wit keyword.operator.key-value.wit
 //               ^^^   variable.language.self.use-path.wit
 //                  ^   keyword.operator.namespace-separator.use-path.wit
 //                   ^^^^^^   entity.name.namespace.id.use-path.wit
@@ -25,30 +25,31 @@ default world some-world {
   export main: func(
 //^^^^^^   keyword.control.export.export-item.wit
 //       ^^^^   variable.other.constant.id.export-item.wit
-//           ^   meta.export-item.wit
+//           ^   meta.export-item.wit keyword.operator.key-value.wit
 //             ^^^^   keyword.other.func.func-type.wit
-//                 ^   keyword.operator.brackets.round.begin.func-type.wit
+//                 ^   meta.function.wit punctuation.brackets.round.begin.wit
 
     args: list<string>,
 //  ^^^^    variable.parameter.id.named-type.wit
-//      ^    keyword.operator.key-value.named-type.wit
+//      ^   meta.named-type-list.wit keyword.operator.key-value.wit
 //        ^^^^    entity.name.type.list.wit
-//            ^    keyword.operator.angle.begin.list.wit
+//            ^    meta.list.ty.wit punctuation.brackets.angle.begin.wit
 //              ^^^^^    entity.name.type.string.wit
-//                   ^    keyword.operator.angle.end.list.wit
+//                   ^    meta.list.ty.wit punctuation.brackets.angle.end.wit
+//                    ^    punctuation.comma.wit
 
   ) -> result
-//^    meta.function.wit
-//  ^^    keyword.operator.arrow.skinny.func-type.wit
+//^    meta.function.wit punctuation.brackets.round.end.wit
+//  ^^    meta.result-list.wit keyword.operator.arrow.skinny.wit
 //     ^^^^^^    meta.types.result-list.wit entity.name.type.result.wit
 
 }
-// <----    punctuation.definition.block.end.world-item.wit
+// <----    meta.world-item.wit punctuation.brackets.curly.end.wit
 
 world another-world {
 // <----    keyword.declaration.world.world-item.wit storage.type.wit
 //    ^^^^^^^^^^^^^    entity.name.type.id.world-item.wit
-//                  ^    punctuation.definition.block.begin.world-item.wit
+//                  ^    meta.world-item.wit punctuation.brackets.curly.begin.wit
 
   use pkg.path.{id}
 //^^^    keyword.other.use.use-item.wit
@@ -56,59 +57,64 @@ world another-world {
 //       ^    keyword.operator.namespace-separator.use-path.wit
 //        ^^^^    entity.name.namespace.id.use-path.wit
 //            ^    keyword.operator.namespace-separator.use-item.wit
-//             ^    punctuation.definition.block.begin.use-item.wit
+//             ^    meta.use-item.wit punctuation.brackets.curly.begin.wit
 //              ^^    entity.name.type.declaration.use-names-item.use-item.wit
-//                ^    punctuation.definition.block.end.use-item.wit
+//                ^    meta.use-item.wit punctuation.brackets.curly.end.wit
 
   type my-type = string
 //^^^^    keyword.declaration.type.type-item.wit
 //     ^^^^^^^    entity.name.type.id.type-item.wit
-//             ^    meta.type-item.wit
+//             ^    meta.type-item.wit punctuation.equal.wit
 //               ^^^^^^    entity.name.type.string.wit
 
   record my-record {
 //^^^^^^    keyword.declaration.record.record-item.wit
 //       ^^^^^^^^^    entity.name.type.id.record-item.wit
-//                 ^    punctuation.definition.block.begin.record-item.wit
+//                 ^    meta.record-item.wit punctuation.brackets.curly.begin.wit
 
     foo: string,
 //  ^^^    variable.declaration.id.record-fields.wit
-//     ^    keyword.operator.key-value.record-fields.wit
+//     ^    meta.record-fields.wit keyword.operator.key-value.wit
 //       ^^^^^^    entity.name.type.string.wit
-//             ^    meta.record-fields.wit
+//             ^    meta.record-fields.wit punctuation.comma.wit
 
     bar: bool
   }
-//^    meta.record-item.wit
+//^    meta.record-item.wit punctuation.brackets.curly.end.wit
 
   import sample: interface {
-    input: func(value: tuple<u8,i32,float64>) -> result
+    input: func(value: tuple<u8, i32, float64>) -> result
 //  ^^^^^    entity.name.function.id.func-item.wit
-//       ^    keyword.operator.key-value.func-item.wit
+//       ^    meta.func-item.wit keyword.operator.key-value.wit
 //         ^^^^    keyword.other.func.func-type.wit
-//             ^    keyword.operator.brackets.round.begin.func-type.wit
-
+//             ^    meta.function.wit punctuation.brackets.round.begin.wit
 
     output: func(
       response: result<_,failure>
 //    ^^^^^^^^    variable.parameter.id.named-type.wit
-//            ^    keyword.operator.key-value.named-type.wit
+//            ^    meta.named-type-list.wit keyword.operator.key-value.wit
 //              ^^^^^^    entity.name.type.result.wit
-//                    ^    keyword.operator.angle.begin.result.wit
+//                    ^    meta.result.ty.wit punctuation.brackets.angle.begin.wit
 //                     ^    variable.other.inferred-type.result.wit
-//                      ^    keyword.operator.comma.result.wit
+//                      ^    meta.result.ty.wit punctuation.comma.wit
 //                       ^^^^^^^    entity.name.type.id.wit
-//                              ^    keyword.operator.angle.end.result.wit
+//                              ^    meta.result.ty.wit punctuation.brackets.angle.end.wit
 
     ) -> result
 //  ^    meta.function.wit
-//    ^^    keyword.operator.arrow.skinny.func-type.wit
+//    ^^    meta.result-list.wit keyword.operator.arrow.skinny.wit
 //       ^^^^^^    meta.types.result-list.wit entity.name.type.result.wit
 
   }
+//^   meta.import-item.wit punctuation.brackets.curly.end.wit
 
   export hello: func()
 //^^^^^^   keyword.control.export.export-item.wit
-}
-// <----    punctuation.definition.block.end.world-item.wit
+//       ^^^^^    variable.other.constant.id.export-item.wit
+//            ^    meta.export-item.wit keyword.operator.key-value.wit
+//              ^^^^    keyword.other.func.func-type.wit
+//                  ^    meta.function.wit punctuation.brackets.round.begin.wit
+//                   ^    meta.function.wit punctuation.brackets.round.end.wit
 
+}
+// <----    meta.world-item.wit punctuation.brackets.curly.end.wit

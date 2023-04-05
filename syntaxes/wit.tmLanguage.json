@@ -355,7 +355,7 @@
           "match": "[\\w][\\-\\w]*"
         },
         {
-          "name": "keyword.operator.comma.use-names-list.wit",
+          "name": "keyword.operator.comma.wit",
           "match": "\\s*(\\,)"
         }
       ],
@@ -395,7 +395,7 @@
           "name": "entity.name.type.id.type-item.wit"
         },
         "3": {
-          "name": "eyword.operator.equal.type-item.wit"
+          "name": "keyword.operator.equal.wit"
         }
       },
       "patterns": [
@@ -461,7 +461,7 @@
       "applyEndPatternLast": 1,
       "endCaptures": {
         "1": {
-          "name": "keyword.operator.comma.record-fields.wit"
+          "name": "keyword.operator.comma.wit"
         }
       }
     },
@@ -507,7 +507,7 @@
           "match": "\\s*\\b[\\w][\\-\\w]*\\b"
         },
         {
-          "name": "keyword.operator.comma.flags-fields.wit",
+          "name": "keyword.operator.comma.wit",
           "match": "\\s*(\\,)"
         }
       ]
@@ -616,7 +616,7 @@
           "match": "\\s*\\b[\\w][\\-\\w]*\\b"
         },
         {
-          "name": "keyword.operator.comma.enum-cases.wit",
+          "name": "keyword.operator.comma.wit",
           "match": "\\s*(\\,)"
         }
       ]
@@ -645,7 +645,7 @@
           "include": "#types"
         },
         {
-          "name": "keyword.operator.comma.enum-cases.wit",
+          "name": "keyword.operator.comma.wit",
           "match": "\\s*(\\,)"
         }
       ],
@@ -747,7 +747,7 @@
                       "include": "#types"
                     },
                     {
-                      "name": "keyword.operator.comma.tuple.wit",
+                      "name": "keyword.operator.comma.wit",
                       "match": "\\s*(\\,)"
                     }
                   ]
@@ -841,7 +841,7 @@
                   "include": "#types"
                 },
                 {
-                  "name": "keyword.operator.comma.result.wit",
+                  "name": "keyword.operator.comma.wit",
                   "match": "\\s*(\\,)"
                 }
               ],
@@ -976,7 +976,7 @@
               "applyEndPatternLast": 1,
               "endCaptures": {
                 "1": {
-                  "name": "keyword.operator.comma.function.wit"
+                  "name": "keyword.operator.comma.wit"
                 }
               }
             }

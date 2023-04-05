@@ -162,7 +162,7 @@
               "name": "variable.other.constant.id.export-item.wit"
             },
             "3": {
-              "name": "keyword.operator.key-value.export-item.wit"
+              "name": "keyword.operator.key-value.wit"
             }
           },
           "patterns": [
@@ -185,7 +185,7 @@
               "name": "variable.other.id.import-item.wit"
             },
             "3": {
-              "name": "keyword.operator.key-value.import-item.wit"
+              "name": "keyword.operator.key-value.wit"
             }
           },
           "patterns": [
@@ -446,7 +446,7 @@
           "name": "variable.declaration.id.record-fields.wit"
         },
         "2": {
-          "name": "keyword.operator.key-value.record-fields.wit"
+          "name": "keyword.operator.key-value.wit"
         }
       },
       "patterns": [
@@ -923,7 +923,7 @@
           "name": "entity.name.function.id.func-item.wit"
         },
         "3": {
-          "name": "keyword.operator.key-value.func-item.wit"
+          "name": "keyword.operator.key-value.wit"
         }
       },
       "patterns": [
@@ -961,7 +961,7 @@
                   "name": "variable.parameter.id.named-type.wit"
                 },
                 "2": {
-                  "name": "keyword.operator.key-value.named-type.wit"
+                  "name": "keyword.operator.key-value.wit"
                 }
               },
               "patterns": [
